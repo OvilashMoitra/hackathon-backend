@@ -26,16 +26,16 @@ async function run() {
             const query = {}
             const cursor = hackathonCollection.find(query);
             const hackathons = await cursor.toArray();
-            for (let i = 0; i < hackathons.length; i++) {
-                if (Moment(hackathons[i]?.endDate).unix() < Moment(today).unix()) {
-                    hackathons[i] = { ...hackathons[i], "status": "Past" };
-                } else if (Moment(today).unix() < Moment(hackathons[i].startDate).unix()) {
-                    hackathons[i] = { ...hackathons[i], "status": "Upcoming" };
-                } else if (Moment(today).unix() >= Moment(hackathons[i]?.startDate).unix() && Moment(today).unix() <= Moment(hackathons[i]?.endDate).unix()) {
-                    hackathons[i] = { ...hackathons[i], "status": "Active" };
-                }
-                // hackathons[i] = { ...hackathons[i], "status": "Past" };
-            }
+            // for (let i = 0; i < hackathons.length; i++) {
+            //     if (Moment(hackathons[i]?.endDate).unix() < Moment(today).unix()) {
+            //         hackathons[i] = { ...hackathons[i], "status": "Past" };
+            //     } else if (Moment(today).unix() < Moment(hackathons[i].startDate).unix()) {
+            //         hackathons[i] = { ...hackathons[i], "status": "Upcoming" };
+            //     } else if (Moment(today).unix() >= Moment(hackathons[i]?.startDate).unix() && Moment(today).unix() <= Moment(hackathons[i]?.endDate).unix()) {
+            //         hackathons[i] = { ...hackathons[i], "status": "Active" };
+            //     }
+            //     // hackathons[i] = { ...hackathons[i], "status": "Past" };
+            // }
             // const newArray = hackathons.(hackathon => {
             //     if (Moment(hackathon?.endDate).unix() < Moment(today).unix()) {
             //         hackathon = { ...hackathon, "status": "Past" }
